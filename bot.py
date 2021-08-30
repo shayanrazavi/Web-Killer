@@ -1,7 +1,6 @@
 from telegram.ext import *
 import socket
 import requests
-import builtwith
 import random
 
 api_key="1982384940:AAFlNGZk7kK7cEo61paPnFCcTH5_JHh-lCk"
@@ -38,19 +37,7 @@ def cloudflare(url):
     return reout
 
 def cms(url):
-    site = url
-    if not 'https://' in site and not 'http://' in site:
-        site = "http://" + site
-    info = builtwith.parse(site)
-    reout = ''
-    for name in info:
-        value=""
-        for val in info[str(name)]:
-            name = name.replace("-",' ')
-            name = name.title()
-            value = value+str(val)+' '
-        reout += ("\n"+name+":"+value + '\n')
-    return reout
+    return "Under Construction..."
 
 def dns_lookup(url):
     return "Under Construction..."
