@@ -699,7 +699,7 @@ def output_response(text_input):
     if sign_position == 1:
         contact_info['username'] = user_message
         sign_position = 2
-        update.message.reply_text("Good. Now let's choose a password for your account.It must contain letters and numbers and symbols. Like this, for example: SinShinbot1400")
+        return ("Good. Now let's choose a password for your account.It must contain letters and numbers and symbols. Like this, for example: SinShinbot1400")
     
     if sign_position == 2:
         contact_info['password'] = user_message
@@ -707,7 +707,7 @@ def output_response(text_input):
         sign_position = 3
         log_position = 3
         known_pesons.append(contact_info)
-        update.message.reply_text("Success! Your account is build. /help")
+        return ("Success! Your account is build. /help")
         
     if log_position == 1:
         check = False
@@ -720,11 +720,11 @@ def output_response(text_input):
         if check == True:
             contact_info['username'] = user_message
             log_position = 2
-            update.message.reply_text("well, Please enter your password:")
+            return ("well, Please enter your password:")
         else:
             contact_info = {}
             log_position = 1
-            update.message.reply_text("Wrong! Please try again:")
+            return ("Wrong! Please try again:")
         
     if log_position == 2:
         check = False
@@ -740,10 +740,10 @@ def output_response(text_input):
             contact_info['password'] = user_message
             contact_info['history'] = save_history
             log_position = 3
-            update.message.reply_text(f"Success! Hello dear {contact_info['user_name']}, Welcome to SinShin /help")
+            return (f"Success! Hello {user_name}, Welcome to SinShin /help")
         else:
             log_position = 2
-            update.message.reply_text("Wrong! Please try again:")
+            return ("Wrong! Please try again:")
             
     if change_username == True:
         for i in known_pesons:
@@ -753,7 +753,7 @@ def output_response(text_input):
         contact_info['username'] = user_message
         change_username = False
         known_pesons.append(contact_info)
-        update.message.reply_text("Success! Your username has been changed. /help")
+        return ("Success! Your username has been changed. /help")
          
     if change_password == True:
         for i in known_pesons:
@@ -763,7 +763,7 @@ def output_response(text_input):
         contact_info['password'] = user_message
         known_pesons.append(contact_info)
         change_password = False
-        update.message.reply_text("Success! Your password has been changed. /help")
+        return ("Success! Your password has been changed. /help")
         
     if cloudflare_bool == True:
         output = cloudflare(user_message)
@@ -773,55 +773,57 @@ def output_response(text_input):
                 known_pesons[i]['history'].append(user_message)
                 
         contact_info['history'].append(user_message)
-        update.message.reply_text(output)
+        return (output)
     
     if cms_bool == True:
-        update.message.reply_text('horaaa :))')
+        output = cms(user_message)
+        cms_bool = False
+        return (output)
     
     if dns_lookup_bool == True:
         output = dns_lookup(user_message)
         dns_lookup_bool = False
-        update.message.reply_text(output)
+        return (output)
     
     if find_admin_bool == True:
         output = find_admin(user_message)
         find_admin_bool = False
-        update.message.reply_text(output)
+        return (output)
     
     if find_shared_dns_bool == True:
         output = find_shared_dns(user_message)
         find_shared_dns_bool = False
-        update.message.reply_text(output)
+        return (output)
     
     if http_header_bool == True:
         output = http_header(user_message)
         http_header_bool = False
-        update.message.reply_text(output)
+        return (output)
     
     if ip_location_bool == True:
         output = ip_location(user_message)
         ip_location_bool = False
-        update.message.reply_text(output)
+        return (output)
     
     if port_scanner_bool == True:
         output = port_scanner(user_message)
         port_scanner_bool = False
-        update.message.reply_text(output)
+        return (output)
     
     if reverse_ip_bool == True:
         output = reverse_ip(user_message)
         reverse_ip_bool = False
-        update.message.reply_text(output)
+        return (output)
     
     if traceroute_bool == True:
         output = traceroute(user_message)
         traceroute_bool = False
-        update.message.reply_text(output)
+        return (output)
     
     if whois_bool == True:
         output = whois(user_message)
         whois_bool = False
-        update.message.reply_text(output)
+        return (output)
         
     if cryptography_bool == True:
         def asembly(str_input):
@@ -1045,7 +1047,7 @@ def output_response(text_input):
         b = shift(a)
         c = index(b)
         # d = pas_kha(c)
-        update.message.reply_text(c)
+        return (c)
         
         
     if decryption_bool == True:
@@ -1109,7 +1111,7 @@ def output_response(text_input):
             x = ramzgoshaei(i)
             reout += chr(x)
             
-        update.message.reply_text(reout)
+        return (reout)
     
     
     
@@ -1210,9 +1212,6 @@ secret tags:
 encode - encrypt a text
 decode - break a password
 '''
-
-
-
 
 
 
