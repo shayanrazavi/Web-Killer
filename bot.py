@@ -776,9 +776,7 @@ def output_response(text_input):
         update.message.reply_text(output)
     
     if cms_bool == True:
-        output = cms(user_message)
-        cms_bool = False
-        update.message.reply_text(output)
+        update.message.reply_text('horaaa :))')
     
     if dns_lookup_bool == True:
         output = dns_lookup(user_message)
