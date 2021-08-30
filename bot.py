@@ -21,19 +21,7 @@ cryptography_bool = False
 decryption_bool = False
 
 def cloudflare(url):
-    subdom = ['ftp', 'cpanel', 'webmail', 'localhost', 'local', 'mysql', 'forum', 'driect-connect', 'blog', 'vb', 'forums', 'home', 'direct', 'forums', 'mail', 'access', 'admin', 'administrator', 'email', 'downloads', 'ssh', 'owa', 'bbs', 'webmin', 'paralel', 'parallels', 'www0', 'www', 'www1', 'www2', 'www3', 'www4', 'www5', 'shop', 'api', 'blogs', 'test', 'mx1', 'cdn', 'mysql', 'mail1', 'secure', 'server', 'ns1', 'ns2', 'smtp', 'vpn', 'm', 'mail2', 'postal', 'support', 'web', 'dev']
-
-    site = url
-    reout = ''
-    for sub in subdom:
-        try:
-            host= str(sub) + "." + str(site)
-            bypass= socket.gethostbyname(str(host))
-            reout += (" [!] CloudFlare Bypass " + str(bypass) + ' | ' + str(host) + '\n')
-        except:
-            reout += ("don't have" + '\n')
-            
-    return reout
+    return "Under Construction..."
 
 def cms(url):
     return "Under Construction..."
