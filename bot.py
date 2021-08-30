@@ -18,6 +18,18 @@ pass_person = [{'username':'shayan86', 'password':'webkiller86', 'history':['htt
 cryptography_bool = False
 decryption_bool = False
 
+cloudflare_bool = False
+cms_bool = False
+dns_lookup_bool = False
+find_admin_bool = False
+find_shared_dns_bool = False
+http_header_bool = False
+ip_location_bool = False
+port_scanner_bool = False
+reverse_ip_bool = False
+traceroute_bool = False
+whois_bool = False
+
 def cloudflare(url):
     return "Under Construction..."
 
@@ -77,15 +89,84 @@ def start_command(update,context):
     traceroute_bool = False
     whois_bool = False
     
-    update.message.reply_text("start_message")
+    start_message = '''I can help you to get secret information about different website.
+
+You can control me by sending these commands:
+
+Account setting:
+/sign_up - create a new account
+/sign_out - delete account
+/log_in - entry in account
+/log_out - exit from account
+/edit_username - change the username
+/edit_password - change the password
+
+Website information:
+/cloudflare - check cloudflare
+/cms - take cms
+/dns_lookup - lookup dns
+/find_admin - find the website admin address
+/find_shared_dns - find the shared dns
+/http_header - take http header of websites
+/ip_location - find ip location 
+/port_scanner - sacn the ports
+/reverse_ip - reverse ip :))
+/traceroute - trace the route
+/whois - take information of websites
+
+Search on history:
+/clear_history - clear the URLs history
+/overwiew_history - view URLs history
+
+/cancel - cancel the previous command'''
+    update.message.reply_text(start_message)
 
 def help_command(update,context):
     global known_user
     if known_user == False:
-        update.message.reply_text('help_message')
+        help_message = '''You can use the following tags to solve your problem:))
+
+You can control me by sending these commands:
+
+Account setting:
+/sign_up - create a new account
+/sign_out - delete account
+/log_in - entry in account
+/log_out - exit from account
+/edit_username - change the username
+/edit_password - change the password
+
+Website information:
+/cloudflare - check cloudflare
+/cms - take cms
+/dns_lookup - lookup dns
+/find_admin - find the website admin address
+/find_shared_dns - find the shared dns
+/http_header - take http header of websites
+/ip_location - find ip location 
+/port_scanner - sacn the ports
+/reverse_ip - reverse ip :))
+/traceroute - trace the route
+/whois - take information of websites
+
+Search on history:
+/clear_history - clear the URLs history
+/overwiew_history - view URLs history
+
+/cancel - cancel the previous command'''
+        update.message.reply_text(help_message)
         
     else:
-        update.message.reply_text('secret_help_message')
+        secret_help_message = '''Welcome to Encryption system
+
+You can control me by sending these commands:
+
+Secret tags:
+/encode - encrypt a text
+/decode - break a password
+
+/help /help2'''
+        update.message.reply_text(secret_help_message)
         
 def sign_up_command(update,context):
     global sign_position, log_position, contact_info
@@ -236,18 +317,6 @@ def cancel_command(update,context):
     change_password = False
 
         
-
-cloudflare_bool = False
-cms_bool = False
-dns_lookup_bool = False
-find_admin_bool = False
-find_shared_dns_bool = False
-http_header_bool = False
-ip_location_bool = False
-port_scanner_bool = False
-reverse_ip_bool = False
-traceroute_bool = False
-whois_bool = False
         
 def cloudflare_command(update,context):
     global sign_position, log_position, contact_info
@@ -671,7 +740,7 @@ def output_response(text_input):
             contact_info['password'] = user_message
             contact_info['history'] = save_history
             log_position = 3
-            update.message.reply_text(f"Success! Hello {user_name}, Welcome to SinShin /help")
+            update.message.reply_text(f"Success! Hello dear {contact_info['user_name']}, Welcome to SinShin /help")
         else:
             log_position = 2
             update.message.reply_text("Wrong! Please try again:")
@@ -704,57 +773,57 @@ def output_response(text_input):
                 known_pesons[i]['history'].append(user_message)
                 
         contact_info['history'].append(user_message)
-        update.message.reply_text("output")
+        update.message.reply_text(output)
     
     if cms_bool == True:
         output = cms(user_message)
         cms_bool = False
-        update.message.reply_text("output")
+        update.message.reply_text(output)
     
     if dns_lookup_bool == True:
         output = dns_lookup(user_message)
         dns_lookup_bool = False
-        update.message.reply_text("output")
+        update.message.reply_text(output)
     
     if find_admin_bool == True:
         output = find_admin(user_message)
         find_admin_bool = False
-        update.message.reply_text("output")
+        update.message.reply_text(output)
     
     if find_shared_dns_bool == True:
         output = find_shared_dns(user_message)
         find_shared_dns_bool = False
-        update.message.reply_text("output")
+        update.message.reply_text(output)
     
     if http_header_bool == True:
         output = http_header(user_message)
         http_header_bool = False
-        update.message.reply_text("output")
+        update.message.reply_text(output)
     
     if ip_location_bool == True:
         output = ip_location(user_message)
         ip_location_bool = False
-        update.message.reply_text("output")
+        update.message.reply_text(output)
     
     if port_scanner_bool == True:
         output = port_scanner(user_message)
         port_scanner_bool = False
-        update.message.reply_text("output")
+        update.message.reply_text(output)
     
     if reverse_ip_bool == True:
         output = reverse_ip(user_message)
         reverse_ip_bool = False
-        update.message.reply_text("output")
+        update.message.reply_text(output)
     
     if traceroute_bool == True:
         output = traceroute(user_message)
         traceroute_bool = False
-        update.message.reply_text("output")
+        update.message.reply_text(output)
     
     if whois_bool == True:
         output = whois(user_message)
         whois_bool = False
-        update.message.reply_text("output")
+        update.message.reply_text(output)
         
     if cryptography_bool == True:
         def asembly(str_input):
@@ -1108,6 +1177,41 @@ dp.add_handler(MessageHandler(Filters.text,handle_message))
 
 updater.start_polling()
 updater.idle()
+
+
+'''
+sign_up - create a new account
+sign_out - delete account
+log_in - entry in account
+log_out - exit from account
+
+cloudflare - check cloudflare
+cms - take cms
+dns_lookup - lookup dns
+find_admin - find the website admin address
+find_shared_dns - find the shared dns
+http_header - take http header of websites
+ip_location - find ip location 
+port_scanner - sacn the ports
+reverse_ip - reverse ip :))
+traceroute - trace the route
+whois - take information of websites
+
+clear_history - clear the URLs history
+overview_history - view URLs history
+
+edit_username - change the username
+edit_password - change the password
+cancel - cancel the previous command
+
+start - none
+help - none
+
+
+secret tags:
+encode - encrypt a text
+decode - break a password
+'''
 
 
 
