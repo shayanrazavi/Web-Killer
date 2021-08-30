@@ -1,9 +1,5 @@
 from telegram.ext import *
-import sys
 import socket
-import time
-import json
-import os
 import requests
 import builtwith
 import random
