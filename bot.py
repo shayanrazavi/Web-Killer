@@ -238,85 +238,16 @@ def start_command(update,context):
     reverse_ip_bool = False
     traceroute_bool = False
     whois_bool = False
-    
-    start_message = '''I can help you to get secret information about different website.
-
-You can control me by sending these commands:
-
-Account setting:
-/sign_up - create a new account
-/sign_out - delete account
-/log_in - entry in account
-/log_out - exit from account
-/edit_username - change the username
-/edit_password - change the password
-
-Website information:
-/cloudflare - check cloudflare
-/cms - take cms
-/dns_lookup - lookup dns
-/find_admin - find the website admin address
-/find_shared_dns - find the shared dns
-/http_header - take http header of websites
-/ip_location - find ip location 
-/port_scanner - sacn the ports
-/reverse_ip - reverse ip :))
-/traceroute - trace the route
-/whois - take information of websites
-
-Search on history:
-/clear_history - clear the URLs history
-/overwiew_history - view URLs history
-
-/cancel - cancel the previous command'''
+   
     update.message.reply_text("start_message")
 
 def help_command(update,context):
     global known_user
     if known_user == False:
-        help_message = '''You can use the following tags to solve your problem:))
-
-You can control me by sending these commands:
-
-Account setting:
-/sign_up - create a new account
-/sign_out - delete account
-/log_in - entry in account
-/log_out - exit from account
-/edit_username - change the username
-/edit_password - change the password
-
-Website information:
-/cloudflare - check cloudflare
-/cms - take cms
-/dns_lookup - lookup dns
-/find_admin - find the website admin address
-/find_shared_dns - find the shared dns
-/http_header - take http header of websites
-/ip_location - find ip location 
-/port_scanner - sacn the ports
-/reverse_ip - reverse ip :))
-/traceroute - trace the route
-/whois - take information of websites
-
-Search on history:
-/clear_history - clear the URLs history
-/overwiew_history - view URLs history
-
-/cancel - cancel the previous command'''
-        update.message.reply_text(help_message)
+        update.message.reply_text("help_message")
         
     else:
-        secret_help_message = '''Welcome to Encryption system
-
-You can control me by sending these commands:
-
-Secret tags:
-/encode - encrypt a text
-/decode - break a password
-
-/help /help2'''
-        update.message.reply_text(secret_help_message)
+        update.message.reply_text("secret_help_message")
         
 def sign_up_command(update,context):
     global sign_position, log_position, contact_info
@@ -1339,40 +1270,5 @@ dp.add_handler(MessageHandler(Filters.text,handle_message))
 
 updater.start_polling()
 updater.idle()
-
-
-'''
-sign_up - create a new account
-sign_out - delete account
-log_in - entry in account
-log_out - exit from account
-
-cloudflare - check cloudflare
-cms - take cms
-dns_lookup - lookup dns
-find_admin - find the website admin address
-find_shared_dns - find the shared dns
-http_header - take http header of websites
-ip_location - find ip location 
-port_scanner - sacn the ports
-reverse_ip - reverse ip :))
-traceroute - trace the route
-whois - take information of websites
-
-clear_history - clear the URLs history
-overview_history - view URLs history
-
-edit_username - change the username
-edit_password - change the password
-cancel - cancel the previous command
-
-start - none
-help - none
-
-
-secret tags:
-encode - encrypt a text
-decode - break a password
-'''
 
 
