@@ -1375,8 +1375,8 @@ help - none
 
 
 secret tags:
-cryptography - 
-decryption - 
+encode - encrypt a text
+decode - break a password
 '''
 
 
