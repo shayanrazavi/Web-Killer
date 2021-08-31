@@ -469,6 +469,10 @@ def edit_username_command(update,context):
     if log_position == 3:
         change_username = True
         update.message.reply_text("Ok, please enter a new user name:")
+    else:
+        change_username = False
+        update.message.reply_text("Error, you must log in or sign in to your account before you can change user name. /log_in /sign_up")
+
 
 def edit_password_command(update,context):
     global sign_position, log_position, contact_info
@@ -494,6 +498,9 @@ def edit_password_command(update,context):
     if log_position == 3:
         change_password = True
         update.message.reply_text("Ok, please enter a new password:")
+    else:
+        change_username = False
+        update.message.reply_text("Error, you must log in or sign in to your account before you can change password. /log_in /sign_up")
         
 
 def cancel_command(update,context):
