@@ -1,7 +1,4 @@
 from telegram.ext import *
-import socket
-import requests
-import builtwith
 import random
 
 api_key="1982384940:AAFlNGZk7kK7cEo61paPnFCcTH5_JHh-lCk"
