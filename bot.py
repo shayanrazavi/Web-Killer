@@ -1055,8 +1055,6 @@ def output_response(text_input):
             if i['username'] == user_message:
                 check = True
         
-        last_user_message = user_message
-        
         if check == True:
             contact_info['username'] = user_message
             log_position = 2
@@ -1070,17 +1068,18 @@ def output_response(text_input):
         check = False
         save_history = []
         for i in known_persons:
-            if i['username'] == last_user_message and i['password'] == user_message:
+            if i['username'] == 'shayan86' and i['password'] == user_message:
                 check = True
                 save_history.extend(i['history'])
-                if i in pass_persons:
-                    known_user = True
+                for j in pass_persons:
+                    if i['username'] == j['username'] and i['password'] == j['password']:
+                        known_user = True
                 
         if check == True:
             contact_info['password'] = user_message
             contact_info['history'] = save_history
             log_position = 3
-            return (f"Success! Hello {contact_info['user_name']}, Welcome to SinShin /help")
+            return (f"Success! Hello dear {contact_info['user_name']}, Welcome to SinShin /help")
         else:
             log_position = 2
             return ("Wrong! Please try again:")
@@ -1118,12 +1117,11 @@ def output_response(text_input):
     if cms_bool == True:
         output = cms(user_message)
         cms_bool = False
-        '''
         for i in known_persons:
             if i == contact_info:
                 known_persons[i]['history'].append(user_message)
                 
-        contact_info['history'].append(user_message)'''
+        contact_info['history'].append(user_message)
         return (output)
     
     if dns_lookup_bool == True:
