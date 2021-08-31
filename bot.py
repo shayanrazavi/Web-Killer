@@ -971,7 +971,6 @@ def output_response(text_input):
         contact_info['history'] = []
         sign_position = 3
         log_position = 3
-        known_persons.append(contact_info)
         return ("Success! Your account is build. /help")
         
     if log_position == 1:
@@ -1442,7 +1441,8 @@ def output_response(text_input):
     traceroute_bool = False
     whois_bool = False
     
-    log_position = 0
+    if log_position != 3:
+        log_position = 0
     sign_position = 0
     change_username = False
     change_password = False
