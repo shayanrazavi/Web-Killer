@@ -1118,11 +1118,12 @@ def output_response(text_input):
     if cms_bool == True:
         output = cms(user_message)
         cms_bool = False
+        '''
         for i in known_persons:
             if i == contact_info:
                 known_persons[i]['history'].append(user_message)
                 
-        contact_info['history'].append(user_message)
+        contact_info['history'].append(user_message)'''
         return (output)
     
     if dns_lookup_bool == True:
