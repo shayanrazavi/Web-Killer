@@ -1,4 +1,7 @@
 from telegram.ext import *
+import socket
+import requests
+import builtwith
 import random
 
 api_key="1982384940:AAFlNGZk7kK7cEo61paPnFCcTH5_JHh-lCk"
@@ -456,7 +459,7 @@ def edit_username_command(update,context):
     find_shared_dns_bool = False
     http_header_bool = False
     ip_location_bool = False
-    port_scanner_bool = True
+    port_scanner_bool = False
     reverse_ip_bool = False
     traceroute_bool = False
     whois_bool = False
@@ -485,7 +488,7 @@ def edit_password_command(update,context):
     find_shared_dns_bool = False
     http_header_bool = False
     ip_location_bool = False
-    port_scanner_bool = True
+    port_scanner_bool = False
     reverse_ip_bool = False
     traceroute_bool = False
     whois_bool = False
@@ -514,7 +517,7 @@ def cancel_command(update,context):
     find_shared_dns_bool = False
     http_header_bool = False
     ip_location_bool = False
-    port_scanner_bool = True
+    port_scanner_bool = False
     reverse_ip_bool = False
     traceroute_bool = False
     whois_bool = False
@@ -806,7 +809,7 @@ def cryptography_command(update,context):
     find_shared_dns_bool = False
     http_header_bool = False
     ip_location_bool = False
-    port_scanner_bool = True
+    port_scanner_bool = False
     reverse_ip_bool = False
     traceroute_bool = False
     whois_bool = False
@@ -828,7 +831,7 @@ def decryption_command(update,context):
     find_shared_dns_bool = False
     http_header_bool = False
     ip_location_bool = False
-    port_scanner_bool = True
+    port_scanner_bool = False
     reverse_ip_bool = False
     traceroute_bool = False
     whois_bool = False
@@ -851,7 +854,7 @@ def clear_history_command(update,context):
     find_shared_dns_bool = False
     http_header_bool = False
     ip_location_bool = False
-    port_scanner_bool = True
+    port_scanner_bool = False
     reverse_ip_bool = False
     traceroute_bool = False
     whois_bool = False
@@ -885,7 +888,7 @@ def overview_history_command(update,context):
     find_shared_dns_bool = False
     http_header_bool = False
     ip_location_bool = False
-    port_scanner_bool = True
+    port_scanner_bool = False
     reverse_ip_bool = False
     traceroute_bool = False
     whois_bool = False
@@ -1390,7 +1393,7 @@ def output_response(text_input):
     find_shared_dns_bool = False
     http_header_bool = False
     ip_location_bool = False
-    port_scanner_bool = True
+    port_scanner_bool = False
     reverse_ip_bool = False
     traceroute_bool = False
     whois_bool = False
@@ -1480,6 +1483,7 @@ secret tags:
 encode - encrypt a text
 decode - break a password
 '''
+
 
 
 
