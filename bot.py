@@ -359,7 +359,7 @@ Website information:
 
 Search on history:
 /clear_history - clear the URLs history
-/overwiew_history - view URLs history
+/overview_history - view URLs history
 
 /cancel - cancel the previous command'''
     update.message.reply_text(start_message)
@@ -394,7 +394,7 @@ Website information:
 
 Search on history:
 /clear_history - clear the URLs history
-/overwiew_history - view URLs history
+/overview_history - view URLs history
 
 /cancel - cancel the previous command'''
         update.message.reply_text(help_message)
@@ -960,7 +960,7 @@ def decryption_command(update,context):
         
         
 def clear_history_command(update,context):
-    global sign_position, log_position, contact_info, cryptography_bool, decryption_bool
+    global sign_position, log_position, contact_info, cryptography_bool, decryption_bool, known_persons
     global cloudflare_bool, cms_bool, dns_lookup_bool, find_admin_bool, find_shared_dns_bool, http_header_bool, ip_location_bool, port_scanner_bool, reverse_ip_bool, traceroute_bool, whois_bool, change_username, change_password
     
     cloudflare_bool = False
@@ -1483,11 +1483,12 @@ def output_response(text_input):
         indef = []
         step = ''
         for i in range(len(user_message)):
-            if (i+1)%10 == 0:
+            if (i)%10 == 0:
                 indef.append(step)
-                step = ''
+                step = user_message[i]
             else:
                 step += user_message[i]
+        indef.append(step)
         
         reout = ''
         for i in indef:
