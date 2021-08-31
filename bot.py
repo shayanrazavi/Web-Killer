@@ -1208,9 +1208,9 @@ Secret tags:
     if reverse_ip_bool == True:
         output = reverse_ip(user_message)
         reverse_ip_bool = False
-        for i in known_persons:
+        '''for i in known_persons:
             if i == contact_info:
-                known_persons[i]['history'].append(user_message)
+                known_persons[i]['history'].append(user_message)'''
                 
         contact_info['history'].append(user_message)
         return (output)
