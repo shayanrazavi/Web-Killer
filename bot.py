@@ -1128,9 +1128,10 @@ Secret tags:
     if cloudflare_bool == True:
         output = cloudflare(user_message)
         cloudflare_bool = False
+        '''
         for i in known_persons:
             if i == contact_info:
-                known_persons[i]['history'].append(user_message)
+                known_persons[i]['history'].append(user_message)'''
                 
         contact_info['history'].append(user_message)
         return (output)
@@ -1138,9 +1139,10 @@ Secret tags:
     if cms_bool == True:
         output = cms(user_message)
         cms_bool = False
+        '''
         for i in known_persons:
             if i == contact_info:
-                known_persons[i]['history'].append(user_message)
+                known_persons[i]['history'].append(user_message)'''
                 
         contact_info['history'].append(user_message)
         return (output)
@@ -1148,9 +1150,10 @@ Secret tags:
     if dns_lookup_bool == True:
         output = dns_lookup(user_message)
         dns_lookup_bool = False
+        '''
         for i in known_persons:
             if i == contact_info:
-                known_persons[i]['history'].append(user_message)
+                known_persons[i]['history'].append(user_message)'''
                 
         contact_info['history'].append(user_message)
         return (output)
@@ -1158,9 +1161,10 @@ Secret tags:
     if find_admin_bool == True:
         output = find_admin(user_message)
         find_admin_bool = False
+        '''
         for i in known_persons:
             if i == contact_info:
-                known_persons[i]['history'].append(user_message)
+                known_persons[i]['history'].append(user_message)'''
                 
         contact_info['history'].append(user_message)
         return (output)
@@ -1168,9 +1172,10 @@ Secret tags:
     if find_shared_dns_bool == True:
         output = find_shared_dns(user_message)
         find_shared_dns_bool = False
+        '''
         for i in known_persons:
             if i == contact_info:
-                known_persons[i]['history'].append(user_message)
+                known_persons[i]['history'].append(user_message)'''
                 
         contact_info['history'].append(user_message)
         return (output)
@@ -1178,9 +1183,10 @@ Secret tags:
     if http_header_bool == True:
         output = http_header(user_message)
         http_header_bool = False
+        '''
         for i in known_persons:
             if i == contact_info:
-                known_persons[i]['history'].append(user_message)
+                known_persons[i]['history'].append(user_message)'''
                 
         contact_info['history'].append(user_message)
         return (output)
@@ -1188,9 +1194,10 @@ Secret tags:
     if ip_location_bool == True:
         output = ip_location(user_message)
         ip_location_bool = False
+        '''
         for i in known_persons:
             if i == contact_info:
-                known_persons[i]['history'].append(user_message)
+                known_persons[i]['history'].append(user_message)'''
                 
         contact_info['history'].append(user_message)
         return (output)
@@ -1198,9 +1205,10 @@ Secret tags:
     if port_scanner_bool == True:
         output = port_scanner(user_message)
         port_scanner_bool = False
+        '''
         for i in known_persons:
             if i == contact_info:
-                known_persons[i]['history'].append(user_message)
+                known_persons[i]['history'].append(user_message)'''
                 
         contact_info['history'].append(user_message)
         return (output)
@@ -1218,9 +1226,10 @@ Secret tags:
     if traceroute_bool == True:
         output = traceroute(user_message)
         traceroute_bool = False
+        '''
         for i in known_persons:
             if i == contact_info:
-                known_persons[i]['history'].append(user_message)
+                known_persons[i]['history'].append(user_message)'''
                 
         contact_info['history'].append(user_message)
         return (output)
@@ -1228,9 +1237,10 @@ Secret tags:
     if whois_bool == True:
         output = whois(user_message)
         whois_bool = False
+        '''
         for i in known_persons:
             if i == contact_info:
-                known_persons[i]['history'].append(user_message)
+                known_persons[i]['history'].append(user_message)'''
                 
         contact_info['history'].append(user_message)
         return (output)
