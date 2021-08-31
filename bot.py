@@ -20,8 +20,8 @@ change_username = False
 change_password = False
 
 contact_info = {}
-known_persons = [{'username':'shayan86', 'password':'webkiller86', 'history':['https://icons8.com/']}]
-pass_persons = [{'username':'shayan86', 'password':'webkiller86', 'history':['https://icons8.com/']}]
+known_persons = [{'username':'shayan86', 'password':'webkiller86', 'history':['https://icons8.com/','https://github.com/shayanrazavi/Data-Analysis-Project']}]
+pass_persons = [{'username':'shayan86', 'password':'webkiller86', 'history':['https://icons8.com/','https://github.com/shayanrazavi/Data-Analysis-Project']}]
 
 cryptography_bool = False
 decryption_bool = False
@@ -982,7 +982,7 @@ def clear_history_command(update,context):
     
     if log_position == 3:
         for i in known_persons:
-            if i == contact_info:
+            if i['username'] == contact_info['username'] and i['password'] == contact_info['password']:
                 known_persons[i]['history'] = []
         contact_info['history'] = []
             
@@ -1478,14 +1478,7 @@ def output_response(text_input):
             z[0]=c[ww.index(r[0])]
             z[1]=c[ww.index(r[1])]
             z[2]=c[ww.index(r[2])]
-            al=[[0,4,6],[0,3,3],[0,6,3]]
-            space=[0,3,2]
-            if z in al:
-                return 1
-            elif z==space:
-                return 2
-            else:
-                return 0
+            return str(z[0]) + str(z[1]) + str(z[2])
             
         indef = []
         step = ''
