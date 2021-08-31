@@ -981,9 +981,11 @@ def clear_history_command(update,context):
     decryption_bool = False
     
     if log_position == 3:
+        '''
         for i in known_persons:
             if i['username'] == contact_info['username'] and i['password'] == contact_info['password']:
                 known_persons[i]['history'] = []
+        '''
         contact_info['history'] = []
             
         update.message.reply_text("Success! history has been cleared. /help")
@@ -1080,6 +1082,18 @@ def output_response(text_input):
             contact_info['password'] = user_message
             contact_info['history'] = save_history
             log_position = 3
+            if known_user == True:
+                secret_help_message = '''Welcome to Encryption system
+
+You can control me by sending these commands:
+
+Secret tags:
+/encode - encrypt a text
+/decode - break a password
+
+/help /help2'''
+                return (f"Success! Hello dear {contact_info['username']}, Welcome to SinShin" + '\n' + secret_help_message)
+
             return (f"Success! Hello dear {contact_info['username']}, Welcome to SinShin /help")
         else:
             log_position = 2
