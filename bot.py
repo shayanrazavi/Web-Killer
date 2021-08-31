@@ -1,5 +1,13 @@
 from telegram.ext import *
 import random
+'''
+We need these libraries for Web-Killers:
+import socket
+import requests
+import builtwith
+import ipapi
+import json
+'''
 
 api_key="1982384940:AAFlNGZk7kK7cEo61paPnFCcTH5_JHh-lCk"
 
@@ -12,7 +20,7 @@ change_username = False
 change_password = False
 
 contact_info = {}
-kown_persons = [{'username':'shayan86', 'password':'webkiller86', 'history':['https://icons8.com/']}]
+known_persons = [{'username':'shayan86', 'password':'webkiller86', 'history':['https://icons8.com/']}]
 pass_persons = [{'username':'shayan86', 'password':'webkiller86', 'history':['https://icons8.com/']}]
 
 cryptography_bool = False
@@ -65,6 +73,11 @@ def cms(url):
     return "Under Construction..."
 
 def dns_lookup(url):
+    '''
+    site = url
+    result = requests.get("http://api.hackertarget.com/dnslookup/?q="+ site).text
+    return (result)
+    '''
     return "Under Construction..."
 
 def find_admin(url):
@@ -209,24 +222,86 @@ def find_admin(url):
     return "Under Construction..."
 
 def find_shared_dns(url):
+    '''
+    site = url
+    result = requests.get("https://api.hackertarget.com/findshareddns/?q="+ site).text
+    print(result)
+    '''
     return "Under Construction..."
 
 def http_header(url):
+    '''
+    site = url
+    result = requests.get("https://api.hackertarget.com/httpheaders/?q="+ site).text
+    return (result)
+    '''
     return "Under Construction..."
 
 def ip_location(url):
+    '''
+    site = url
+    a = site.count(".")
+    if a<3 and a>0:
+       bypass= socket.gethostbyname(str(site))
+       site = bypass
+    source = ipapi.location(ip=site,key=None)
+    
+    result = ''
+    result += (" [!]"+" See your info" + '\n')
+    result += (" [!]"+" ip = "+ source["ip"] + '\n'))
+    result += (" [!]"+" city = " + source["city"] + '\n'))
+    result += (" [!]"+" region = "+ source["region"] + '\n'))
+    result += (" [!]"+" id country = "+source["country"] + '\n'))
+    result += (" [!]"+" country = "+ source["country_name"] + '\n'))
+    result += (" [!]"+" Calling Code = "+source["country_calling_code"] + '\n'))
+    result += (" [!]"+" Languages = "+source["languages"])
+    result += (" [!]"+" org = "+ source["org"] + '\n'))
+    
+    return result
+    '''
     return "Under Construction..."
 
 def port_scanner(url):
+    '''
+    site = url
+    result = requests.get("http://api.hackertarget.com/nmap/?q="+ site).text
+    return (result)
+    '''
     return "Under Construction..."
 
 def reverse_ip(url):
+    '''
+    site = input("please enter the adress of site (it's not a reqeast) :")
+    data = {"remoteAddress":site}
+    link = requests.post("https://domains.yougetsignal.com/domains.php", data)
+    source = json.loads(link.content)
+    
+    result = (source + '\n')
+    for data in source["domainArray"]:
+        result += (""+data[0]+"\n"+'\n')
+    return result
+    '''
     return "Under Construction..."
 
 def traceroute(url):
+    '''
+    site = url
+    a=site.count(".")
+    if a<3 and a>0:
+       bypass = socket.gethostbyname(str(site))
+       site = bypass
+    result = requests.get("http://api.hackertarget.com/mtr/?q="+ site).text
+    
+    return (result)
+    '''
     return "Under Construction..."
 
 def whois(url):
+    '''
+    site = url
+    result = requests.get("http://api.hackertarget.com/whois/?q="+ site).text
+    return (result)
+    '''
     return "Under Construction..."
 
 
@@ -240,7 +315,6 @@ def start_command(update,context):
     sign_position = 0
     change_username = False
     change_password = False
-    contact_info = {}
     cloudflare_bool = False
     cms_bool = False
     dns_lookup_bool = False
@@ -359,6 +433,7 @@ def sign_up_command(update,context):
     change_password = False
     cryptography_bool = False
     decryption_bool = False
+    contact_info = {}
     
     update.message.reply_text("Alright, How are we going to call you? Please choose a user name for your account.")
     
@@ -971,7 +1046,7 @@ def output_response(text_input):
         contact_info['history'] = []
         sign_position = 3
         log_position = 3
-        # known_persons.append(contact_info)
+        known_persons.append(contact_info)
         return ("Success! Your account is build. /help")
         
     if log_position == 1:
@@ -1271,9 +1346,9 @@ def output_response(text_input):
             c=''
             u=''
             d=[]
-            for j in range(len(n)):  
+            for j in range(len(n)):
                 c=c+n[j]
-                if (j+1)%10==0: 
+                if (j+1)%10==0:
                     if ramzgoshaei(c)!=0:
                         x=len(d)
                         dd=[0]*x
