@@ -1,4 +1,7 @@
 from telegram.ext import *
+import socket
+import requests
+import builtwith
 import random
 
 api_key="1982384940:AAFlNGZk7kK7cEo61paPnFCcTH5_JHh-lCk"
@@ -493,13 +496,13 @@ def edit_password_command(update,context):
     if log_position != 3:
         log_position = 0
     sign_position = 0
-    change_password = False
+    change_username = False
     
     if log_position == 3:
         change_password = True
         update.message.reply_text("Ok, please enter a new password:")
     else:
-        change_username = False
+        change_password = False
         update.message.reply_text("Error, you must log in or sign in to your account before you can change password. /log_in /sign_up")
         
 
