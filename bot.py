@@ -971,6 +971,7 @@ def output_response(text_input):
         contact_info['history'] = []
         sign_position = 3
         log_position = 3
+        known_persons.append(contact_info)
         return ("Success! Your account is build. /help")
         
     if log_position == 1:
