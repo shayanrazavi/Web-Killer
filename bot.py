@@ -984,9 +984,11 @@ def clear_history_command(update,context):
     decryption_bool = False
     
     if log_position == 3:
+        '''
         for i in known_persons:
             if i['username'] == contact_info['username'] and i['password'] == contact_info['password']:
                 known_persons[i]['history'] = []
+        '''
         contact_info['history'] = []
             
         update.message.reply_text("Success! history has been cleared. /help")
