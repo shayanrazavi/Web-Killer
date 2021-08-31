@@ -1068,7 +1068,7 @@ def output_response(text_input):
         check = False
         save_history = []
         for i in known_persons:
-            if i['username'] == 'shayan86' and i['password'] == user_message:
+            if i['username'] == 'shayan86' and i['password'] == 'webkiller86':
                 check = True
                 save_history.extend(i['history'])
                 for j in pass_persons:
