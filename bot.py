@@ -13,7 +13,7 @@ change_password = False
 
 contact_info = {}
 kown_persons = [{'username':'shayan86', 'password':'webkiller86', 'history':['https://icons8.com/']}]
-pass_person = [{'username':'shayan86', 'password':'webkiller86', 'history':['https://icons8.com/']}]
+pass_persons = [{'username':'shayan86', 'password':'webkiller86', 'history':['https://icons8.com/']}]
 
 cryptography_bool = False
 decryption_bool = False
@@ -234,11 +234,9 @@ def whois(url):
 
 
 def start_command(update,context):
-    global sign_position, log_position, contact_info
+    global sign_position, log_position, contact_info, cryptography_bool, decryption_bool
     global cloudflare_bool, cms_bool, dns_lookup_bool, find_admin_bool, find_shared_dns_bool, http_header_bool, ip_location_bool, port_scanner_bool, reverse_ip_bool, traceroute_bool, whois_bool, change_username, change_password
     
-    known_user = False
-    log_position = 0
     sign_position = 0
     change_username = False
     change_password = False
@@ -254,6 +252,11 @@ def start_command(update,context):
     reverse_ip_bool = False
     traceroute_bool = False
     whois_bool = False
+    
+    change_username = False
+    change_password = False
+    cryptography_bool = False
+    decryption_bool = False
     
     start_message = '''I can help you to get secret information about different website.
 
@@ -335,7 +338,7 @@ Secret tags:
         update.message.reply_text(secret_help_message)
         
 def sign_up_command(update,context):
-    global sign_position, log_position, contact_info
+    global sign_position, log_position, contact_info, cryptography_bool, decryption_bool
     global cloudflare_bool, cms_bool, dns_lookup_bool, find_admin_bool, find_shared_dns_bool, http_header_bool, ip_location_bool, port_scanner_bool, reverse_ip_bool, traceroute_bool, whois_bool, change_username, change_password
     
     sign_position = 1
@@ -354,11 +357,13 @@ def sign_up_command(update,context):
     
     change_username = False
     change_password = False
+    cryptography_bool = False
+    decryption_bool = False
     
     update.message.reply_text("Alright, How are we going to call you? Please choose a user name for your account.")
     
 def sign_out_command(update,context):
-    global sign_position, log_position, contact_info, known_pesons
+    global sign_position, log_position, contact_info, known_persons, cryptography_bool, decryption_bool, known_user
     global cloudflare_bool, cms_bool, dns_lookup_bool, find_admin_bool, find_shared_dns_bool, http_header_bool, ip_location_bool, port_scanner_bool, reverse_ip_bool, traceroute_bool, whois_bool, change_username, change_password
     
     cloudflare_bool = False
@@ -375,23 +380,25 @@ def sign_out_command(update,context):
     
     change_username = False
     change_password = False
+    cryptography_bool = False
+    decryption_bool = False
     
     if log_position == 3:
         log_position = 0
         sign_position = 0
         for i in kown_persons:
             if i == contact_info:
-                known_pesons.remove(i)
+                known_persons.remove(i)
         contact_info = {}
         known_user = False
         update.message.reply_text("Success! Your account has been deleted. /help")
     else:
-        log_position = 0
-        sign_position = 0
+        if log_position != 3:
+            log_position = 0
         update.message.reply_text("Error, you must log in to your account before you can sign out. /log_in /sign_up")
     
 def log_in_command(update,context):
-    global sign_position, log_position, contact_info
+    global sign_position, log_position, contact_info, cryptography_bool, decryption_bool
     global cloudflare_bool, cms_bool, dns_lookup_bool, find_admin_bool, find_shared_dns_bool, http_header_bool, ip_location_bool, port_scanner_bool, reverse_ip_bool, traceroute_bool, whois_bool, change_username, change_password
     
     log_position = 1
@@ -410,11 +417,14 @@ def log_in_command(update,context):
     
     change_username = False
     change_password = False
+    cryptography_bool = False
+    decryption_bool = False
+    contact_info = {}
     
     update.message.reply_text("Please enter your username:")
     
 def log_out_command(update,context):
-    global sign_position, log_position, contact_info, known_user
+    global sign_position, log_position, contact_info, known_user, cryptography_bool, decryption_bool
     global cloudflare_bool, cms_bool, dns_lookup_bool, find_admin_bool, find_shared_dns_bool, http_header_bool, ip_location_bool, port_scanner_bool, reverse_ip_bool, traceroute_bool, whois_bool, change_username, change_password
     
     cloudflare_bool = False
@@ -431,6 +441,8 @@ def log_out_command(update,context):
     
     change_username = False
     change_password = False
+    cryptography_bool = False
+    decryption_bool = False
     
     if log_position == 3:
         contact_info = {}
@@ -439,14 +451,14 @@ def log_out_command(update,context):
         known_user = False
         update.message.reply_text("Success! You are logged out. /help")
     else:
-        log_position = 0
-        sign_position = 0
+        if log_position != 3:
+            log_position = 0
         update.message.reply_text("Error, you must log in or sign in to your account before you can log out. /log_in /sign_up")
 
         
 
 def edit_username_command(update,context):
-    global sign_position, log_position, contact_info
+    global sign_position, log_position, contact_info, cryptography_bool, decryption_bool
     global cloudflare_bool, cms_bool, dns_lookup_bool, find_admin_bool, find_shared_dns_bool, http_header_bool, ip_location_bool, port_scanner_bool, reverse_ip_bool, traceroute_bool, whois_bool, change_username, change_password
     
     cloudflare_bool = False
@@ -460,6 +472,9 @@ def edit_username_command(update,context):
     reverse_ip_bool = False
     traceroute_bool = False
     whois_bool = False
+    
+    cryptography_bool = False
+    decryption_bool = False
     
     if log_position != 3:
         log_position = 0
@@ -475,7 +490,7 @@ def edit_username_command(update,context):
 
 
 def edit_password_command(update,context):
-    global sign_position, log_position, contact_info
+    global sign_position, log_position, contact_info, cryptography_bool, decryption_bool
     global cloudflare_bool, cms_bool, dns_lookup_bool, find_admin_bool, find_shared_dns_bool, http_header_bool, ip_location_bool, port_scanner_bool, reverse_ip_bool, traceroute_bool, whois_bool, change_username, change_password
     
     cloudflare_bool = False
@@ -489,6 +504,9 @@ def edit_password_command(update,context):
     reverse_ip_bool = False
     traceroute_bool = False
     whois_bool = False
+    
+    cryptography_bool = False
+    decryption_bool = False
     
     if log_position != 3:
         log_position = 0
@@ -504,7 +522,7 @@ def edit_password_command(update,context):
         
 
 def cancel_command(update,context):
-    global sign_position, log_position, contact_info
+    global sign_position, log_position, contact_info, cryptography_bool, decryption_bool
     global cloudflare_bool, cms_bool, dns_lookup_bool, find_admin_bool, find_shared_dns_bool, http_header_bool, ip_location_bool, port_scanner_bool, reverse_ip_bool, traceroute_bool, whois_bool, change_username, change_password
     
     cloudflare_bool = False
@@ -522,13 +540,16 @@ def cancel_command(update,context):
     if log_position != 3:
         log_position = 0
     sign_position = 0
+    
     change_username = False
     change_password = False
+    cryptography_bool = False
+    decryption_bool = False
 
         
         
 def cloudflare_command(update,context):
-    global sign_position, log_position, contact_info
+    global sign_position, log_position, contact_info, cryptography_bool, decryption_bool
     global cloudflare_bool, cms_bool, dns_lookup_bool, find_admin_bool, find_shared_dns_bool, http_header_bool, ip_location_bool, port_scanner_bool, reverse_ip_bool, traceroute_bool, whois_bool, change_username, change_password
     
     cloudflare_bool = True
@@ -546,13 +567,16 @@ def cloudflare_command(update,context):
     if log_position != 3:
         log_position = 0
     sign_position = 0
+    
     change_username = False
     change_password = False
+    cryptography_bool = False
+    decryption_bool = False
     
     update.message.reply_text("please enter the adress of site:")
 
 def cms_command(update,context):
-    global sign_position, log_position, contact_info
+    global sign_position, log_position, contact_info, cryptography_bool, decryption_bool
     global cloudflare_bool, cms_bool, dns_lookup_bool, find_admin_bool, find_shared_dns_bool, http_header_bool, ip_location_bool, port_scanner_bool, reverse_ip_bool, traceroute_bool, whois_bool, change_username, change_password
     
     cloudflare_bool = False
@@ -572,11 +596,13 @@ def cms_command(update,context):
     sign_position = 0
     change_username = False
     change_password = False
+    cryptography_bool = False
+    decryption_bool = False
     
     update.message.reply_text("please enter the adress of site:")
 
 def dns_lookup_command(update,context):
-    global sign_position, log_position, contact_info
+    global sign_position, log_position, contact_info, cryptography_bool, decryption_bool
     global cloudflare_bool, cms_bool, dns_lookup_bool, find_admin_bool, find_shared_dns_bool, http_header_bool, ip_location_bool, port_scanner_bool, reverse_ip_bool, traceroute_bool, whois_bool, change_username, change_password
     
     cloudflare_bool = False
@@ -596,11 +622,13 @@ def dns_lookup_command(update,context):
     sign_position = 0
     change_username = False
     change_password = False
+    cryptography_bool = False
+    decryption_bool = False
     
     update.message.reply_text("please enter the adress of site:")
 
 def find_admin_command(update,context):
-    global sign_position, log_position, contact_info
+    global sign_position, log_position, contact_info, cryptography_bool, decryption_bool
     global cloudflare_bool, cms_bool, dns_lookup_bool, find_admin_bool, find_shared_dns_bool, http_header_bool, ip_location_bool, port_scanner_bool, reverse_ip_bool, traceroute_bool, whois_bool, change_username, change_password
     
     cloudflare_bool = False
@@ -620,11 +648,13 @@ def find_admin_command(update,context):
     sign_position = 0
     change_username = False
     change_password = False
+    cryptography_bool = False
+    decryption_bool = False
     
     update.message.reply_text("please enter the adress of site:")
 
 def find_shared_dns_command(update,context):
-    global sign_position, log_position, contact_info
+    global sign_position, log_position, contact_info, cryptography_bool, decryption_bool
     global cloudflare_bool, cms_bool, dns_lookup_bool, find_admin_bool, find_shared_dns_bool, http_header_bool, ip_location_bool, port_scanner_bool, reverse_ip_bool, traceroute_bool, whois_bool, change_username, change_password
     
     cloudflare_bool = False
@@ -644,11 +674,13 @@ def find_shared_dns_command(update,context):
     sign_position = 0
     change_username = False
     change_password = False
+    cryptography_bool = False
+    decryption_bool = False
     
     update.message.reply_text("please enter the adress of site:")
 
 def http_header_command(update,context):
-    global sign_position, log_position, contact_info
+    global sign_position, log_position, contact_info, cryptography_bool, decryption_bool
     global cloudflare_bool, cms_bool, dns_lookup_bool, find_admin_bool, find_shared_dns_bool, http_header_bool, ip_location_bool, port_scanner_bool, reverse_ip_bool, traceroute_bool, whois_bool, change_username, change_password
     
     cloudflare_bool = False
@@ -668,11 +700,13 @@ def http_header_command(update,context):
     sign_position = 0
     change_username = False
     change_password = False
+    cryptography_bool = False
+    decryption_bool = False
     
     update.message.reply_text("please enter the adress of site:")
 
 def ip_location_command(update,context):
-    global sign_position, log_position, contact_info
+    global sign_position, log_position, contact_info, cryptography_bool, decryption_bool
     global cloudflare_bool, cms_bool, dns_lookup_bool, find_admin_bool, find_shared_dns_bool, http_header_bool, ip_location_bool, port_scanner_bool, reverse_ip_bool, traceroute_bool, whois_bool, change_username, change_password
     
     cloudflare_bool = False
@@ -692,11 +726,13 @@ def ip_location_command(update,context):
     sign_position = 0
     change_username = False
     change_password = False
+    cryptography_bool = False
+    decryption_bool = False
     
     update.message.reply_text("please enter the adress of site:")
 
 def port_scanner_command(update,context):
-    global sign_position, log_position, contact_info
+    global sign_position, log_position, contact_info, cryptography_bool, decryption_bool
     global cloudflare_bool, cms_bool, dns_lookup_bool, find_admin_bool, find_shared_dns_bool, http_header_bool, ip_location_bool, port_scanner_bool, reverse_ip_bool, traceroute_bool, whois_bool, change_username, change_password
     
     cloudflare_bool = False
@@ -716,11 +752,13 @@ def port_scanner_command(update,context):
     sign_position = 0
     change_username = False
     change_password = False
+    cryptography_bool = False
+    decryption_bool = False
     
     update.message.reply_text("please enter the adress of site:")
 
 def reverse_ip_command(update,context):
-    global sign_position, log_position, contact_info
+    global sign_position, log_position, contact_info, cryptography_bool, decryption_bool
     global cloudflare_bool, cms_bool, dns_lookup_bool, find_admin_bool, find_shared_dns_bool, http_header_bool, ip_location_bool, port_scanner_bool, reverse_ip_bool, traceroute_bool, whois_bool, change_username, change_password
     
     cloudflare_bool = False
@@ -740,11 +778,13 @@ def reverse_ip_command(update,context):
     sign_position = 0
     change_username = False
     change_password = False
+    cryptography_bool = False
+    decryption_bool = False
     
     update.message.reply_text("please enter the adress of site:")
 
 def traceroute_command(update,context):
-    global sign_position, log_position, contact_info
+    global sign_position, log_position, contact_info, cryptography_bool, decryption_bool
     global cloudflare_bool, cms_bool, dns_lookup_bool, find_admin_bool, find_shared_dns_bool, http_header_bool, ip_location_bool, port_scanner_bool, reverse_ip_bool, traceroute_bool, whois_bool, change_username, change_password
     
     cloudflare_bool = False
@@ -764,11 +804,13 @@ def traceroute_command(update,context):
     sign_position = 0
     change_username = False
     change_password = False
+    cryptography_bool = False
+    decryption_bool = False
     
     update.message.reply_text("please enter the adress of site:")
 
 def whois_command(update,context):
-    global sign_position, log_position, contact_info
+    global sign_position, log_position, contact_info, cryptography_bool, decryption_bool
     global cloudflare_bool, cms_bool, dns_lookup_bool, find_admin_bool, find_shared_dns_bool, http_header_bool, ip_location_bool, port_scanner_bool, reverse_ip_bool, traceroute_bool, whois_bool, change_username, change_password
     
     cloudflare_bool = False
@@ -788,6 +830,8 @@ def whois_command(update,context):
     sign_position = 0
     change_username = False
     change_password = False
+    cryptography_bool = False
+    decryption_bool = False
     
     update.message.reply_text("please enter the adress of site:")
     
@@ -796,7 +840,7 @@ def whois_command(update,context):
     
     
 def cryptography_command(update,context):
-    global sign_position, log_position, contact_info
+    global sign_position, log_position, contact_info, cryptography_bool, decryption_bool, known_user
     global cloudflare_bool, cms_bool, dns_lookup_bool, find_admin_bool, find_shared_dns_bool, http_header_bool, ip_location_bool, port_scanner_bool, reverse_ip_bool, traceroute_bool, whois_bool, change_username, change_password
     
     cloudflare_bool = False
@@ -818,7 +862,7 @@ def cryptography_command(update,context):
         cryptography_bool = True
         update.message.reply_text('Please enter your message:')
 def decryption_command(update,context):
-    global sign_position, log_position, contact_info
+    global sign_position, log_position, contact_info, cryptography_bool, decryption_bool, known_user
     global cloudflare_bool, cms_bool, dns_lookup_bool, find_admin_bool, find_shared_dns_bool, http_header_bool, ip_location_bool, port_scanner_bool, reverse_ip_bool, traceroute_bool, whois_bool, change_username, change_password
     
     cloudflare_bool = False
@@ -841,7 +885,7 @@ def decryption_command(update,context):
         
         
 def clear_history_command(update,context):
-    global sign_position, log_position, contact_info
+    global sign_position, log_position, contact_info, cryptography_bool, decryption_bool
     global cloudflare_bool, cms_bool, dns_lookup_bool, find_admin_bool, find_shared_dns_bool, http_header_bool, ip_location_bool, port_scanner_bool, reverse_ip_bool, traceroute_bool, whois_bool, change_username, change_password
     
     cloudflare_bool = False
@@ -858,15 +902,16 @@ def clear_history_command(update,context):
     
     change_username = False
     change_password = False
+    cryptography_bool = False
+    decryption_bool = False
     
     if log_position == 3:
         for i in kown_persons:
             if i == contact_info:
-                known_pesons[i]['history'] = []
+                known_persons[i]['history'] = []
         contact_info['history'] = []
-        known_user = False
             
-        update.message.reply_text(overview)
+        update.message.reply_text("Success! history has been cleared. /help")
     
     else:
         log_position = 0
@@ -875,7 +920,7 @@ def clear_history_command(update,context):
 
     
 def overview_history_command(update,context):
-    global sign_position, log_position, contact_info
+    global sign_position, log_position, contact_info, cryptography_bool, decryption_bool, known_user
     global cloudflare_bool, cms_bool, dns_lookup_bool, find_admin_bool, find_shared_dns_bool, http_header_bool, ip_location_bool, port_scanner_bool, reverse_ip_bool, traceroute_bool, whois_bool, change_username, change_password
     
     cloudflare_bool = False
@@ -892,6 +937,8 @@ def overview_history_command(update,context):
     
     change_username = False
     change_password = False
+    cryptography_bool = False
+    decryption_bool = False
     
     if log_position == 3:
         history = contact_info['history']
@@ -909,7 +956,7 @@ def overview_history_command(update,context):
 
         
 def output_response(text_input):
-    global sign_position, log_position, contact_info
+    global sign_position, log_position, contact_info, cryptography_bool, decryption_bool, known_user
     global cloudflare_bool, cms_bool, dns_lookup_bool, find_admin_bool, find_shared_dns_bool, http_header_bool, ip_location_bool, port_scanner_bool, reverse_ip_bool, traceroute_bool, whois_bool, change_username, change_password
     
     user_message = str(text_input)
@@ -924,12 +971,12 @@ def output_response(text_input):
         contact_info['history'] = []
         sign_position = 3
         log_position = 3
-        known_pesons.append(contact_info)
+        known_persons.append(contact_info)
         return ("Success! Your account is build. /help")
         
     if log_position == 1:
         check = False
-        for i in known_pesons:
+        for i in known_persons:
             if i['username'] == user_message:
                 check = True
         
@@ -947,39 +994,39 @@ def output_response(text_input):
     if log_position == 2:
         check = False
         save_history = []
-        for i in known_pesons:
+        for i in known_persons:
             if i['username'] == last_user_message and i['password'] == user_message:
                 check = True
                 save_history.extend(i['history'])
-                if i in pass_person:
+                if i in pass_persons:
                     known_user = True
                 
         if check == True:
             contact_info['password'] = user_message
             contact_info['history'] = save_history
             log_position = 3
-            return (f"Success! Hello {user_name}, Welcome to SinShin /help")
+            return (f"Success! Hello {contact_info['user_name']}, Welcome to SinShin /help")
         else:
             log_position = 2
             return ("Wrong! Please try again:")
             
     if change_username == True:
-        for i in known_pesons:
+        for i in known_persons:
             if i['username'] == contact_info['username'] and i['password'] ==  contact_info['password']:
-                known_pesons.remove(i)
+                known_persons.remove(i)
                 
         contact_info['username'] = user_message
         change_username = False
-        known_pesons.append(contact_info)
+        known_persons.append(contact_info)
         return ("Success! Your username has been changed. /help")
          
     if change_password == True:
-        for i in known_pesons:
+        for i in known_persons:
             if i['username'] == contact_info['username'] and i['password'] ==  contact_info['password']:
-                known_pesons.remove(i)
+                known_persons.remove(i)
         
         contact_info['password'] = user_message
-        known_pesons.append(contact_info)
+        known_persons.append(contact_info)
         change_password = False
         return ("Success! Your password has been changed. /help")
         
@@ -988,7 +1035,7 @@ def output_response(text_input):
         cloudflare_bool = False
         for i in kown_persons:
             if i == contact_info:
-                known_pesons[i]['history'].append(user_message)
+                known_persons[i]['history'].append(user_message)
                 
         contact_info['history'].append(user_message)
         return (output)
@@ -998,7 +1045,7 @@ def output_response(text_input):
         cms_bool = False
         for i in kown_persons:
             if i == contact_info:
-                known_pesons[i]['history'].append(user_message)
+                known_persons[i]['history'].append(user_message)
                 
         contact_info['history'].append(user_message)
         return (output)
@@ -1008,7 +1055,7 @@ def output_response(text_input):
         dns_lookup_bool = False
         for i in kown_persons:
             if i == contact_info:
-                known_pesons[i]['history'].append(user_message)
+                known_persons[i]['history'].append(user_message)
                 
         contact_info['history'].append(user_message)
         return (output)
@@ -1018,7 +1065,7 @@ def output_response(text_input):
         find_admin_bool = False
         for i in kown_persons:
             if i == contact_info:
-                known_pesons[i]['history'].append(user_message)
+                known_persons[i]['history'].append(user_message)
                 
         contact_info['history'].append(user_message)
         return (output)
@@ -1028,7 +1075,7 @@ def output_response(text_input):
         find_shared_dns_bool = False
         for i in kown_persons:
             if i == contact_info:
-                known_pesons[i]['history'].append(user_message)
+                known_persons[i]['history'].append(user_message)
                 
         contact_info['history'].append(user_message)
         return (output)
@@ -1038,7 +1085,7 @@ def output_response(text_input):
         http_header_bool = False
         for i in kown_persons:
             if i == contact_info:
-                known_pesons[i]['history'].append(user_message)
+                known_persons[i]['history'].append(user_message)
                 
         contact_info['history'].append(user_message)
         return (output)
@@ -1048,7 +1095,7 @@ def output_response(text_input):
         ip_location_bool = False
         for i in kown_persons:
             if i == contact_info:
-                known_pesons[i]['history'].append(user_message)
+                known_persons[i]['history'].append(user_message)
                 
         contact_info['history'].append(user_message)
         return (output)
@@ -1058,7 +1105,7 @@ def output_response(text_input):
         port_scanner_bool = False
         for i in kown_persons:
             if i == contact_info:
-                known_pesons[i]['history'].append(user_message)
+                known_persons[i]['history'].append(user_message)
                 
         contact_info['history'].append(user_message)
         return (output)
@@ -1068,7 +1115,7 @@ def output_response(text_input):
         reverse_ip_bool = False
         for i in kown_persons:
             if i == contact_info:
-                known_pesons[i]['history'].append(user_message)
+                known_persons[i]['history'].append(user_message)
                 
         contact_info['history'].append(user_message)
         return (output)
@@ -1078,7 +1125,7 @@ def output_response(text_input):
         traceroute_bool = False
         for i in kown_persons:
             if i == contact_info:
-                known_pesons[i]['history'].append(user_message)
+                known_persons[i]['history'].append(user_message)
                 
         contact_info['history'].append(user_message)
         return (output)
@@ -1088,7 +1135,7 @@ def output_response(text_input):
         whois_bool = False
         for i in kown_persons:
             if i == contact_info:
-                known_pesons[i]['history'].append(user_message)
+                known_persons[i]['history'].append(user_message)
                 
         contact_info['history'].append(user_message)
         return (output)
@@ -1319,7 +1366,7 @@ def output_response(text_input):
         
         
     if decryption_bool == True:
-        def ramzgoshaei(n):
+        def ramzgoshaei2(n):
             kshift=n[len(n)-2]+n[len(n)-1]
             shift=int(n[len(n)-3])
             ot=[]
@@ -1376,7 +1423,7 @@ def output_response(text_input):
         
         reout = ''
         for i in indef:
-            x = ramzgoshaei(i)
+            x = ramzgoshaei2(i)
             reout += chr(x)
             
         return (reout)
@@ -1399,6 +1446,8 @@ def output_response(text_input):
     sign_position = 0
     change_username = False
     change_password = False
+    cryptography_bool = False
+    decryption_bool = False
     return "I dont understand you! Please try again. /help"
 
 
