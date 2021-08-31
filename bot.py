@@ -365,9 +365,7 @@ Search on history:
     update.message.reply_text(start_message)
 
 def help_command(update,context):
-    global known_user
-    if known_user == False:
-        help_message = '''You can use the following tags to solve your problem:))
+    help_message = '''You can use the following tags to solve your problem:))
 
 You can control me by sending these commands:
 
@@ -397,9 +395,11 @@ Search on history:
 /overview_history - view URLs history
 
 /cancel - cancel the previous command'''
-        update.message.reply_text(help_message)
+    update.message.reply_text(help_message)
         
-    else:
+def help2_command(update,context):
+    global known_user
+    if known_user == True:
         secret_help_message = '''Welcome to Encryption system
 
 You can control me by sending these commands:
@@ -410,6 +410,9 @@ Secret tags:
 
 /help /help2'''
         update.message.reply_text(secret_help_message)
+        
+    else:
+        update.message.reply_text("I dont understand you! Please try again. /help")
         
 def sign_up_command(update,context):
     global sign_position, log_position, contact_info, cryptography_bool, decryption_bool
@@ -981,11 +984,9 @@ def clear_history_command(update,context):
     decryption_bool = False
     
     if log_position == 3:
-        '''
         for i in known_persons:
             if i['username'] == contact_info['username'] and i['password'] == contact_info['password']:
                 known_persons[i]['history'] = []
-        '''
         contact_info['history'] = []
             
         update.message.reply_text("Success! history has been cleared. /help")
@@ -1546,6 +1547,7 @@ dp=updater.dispatcher
 
 dp.add_handler(CommandHandler("start",start_command))
 dp.add_handler(CommandHandler("help",help_command))
+dp.add_handler(CommandHandler("help2",help2_command))
 
 dp.add_handler(CommandHandler("sign_up",sign_up_command))
 dp.add_handler(CommandHandler("sign_out",sign_out_command))
