@@ -449,10 +449,6 @@ def edit_username_command(update,context):
     global sign_position, log_position, contact_info
     global cloudflare_bool, cms_bool, dns_lookup_bool, find_admin_bool, find_shared_dns_bool, http_header_bool, ip_location_bool, port_scanner_bool, reverse_ip_bool, traceroute_bool, whois_bool, change_username, change_password
     
-    
-    if log_position == 3:
-        change_username = True
-        
     cloudflare_bool = False
     cms_bool = False
     dns_lookup_bool = False
@@ -470,15 +466,14 @@ def edit_username_command(update,context):
     sign_position = 0
     change_password = False
     
-    update.message.reply_text("Ok, please enter a new user name:")
+    if log_position == 3:
+        change_username = True
+        update.message.reply_text("Ok, please enter a new user name:")
 
 def edit_password_command(update,context):
     global sign_position, log_position, contact_info
     global cloudflare_bool, cms_bool, dns_lookup_bool, find_admin_bool, find_shared_dns_bool, http_header_bool, ip_location_bool, port_scanner_bool, reverse_ip_bool, traceroute_bool, whois_bool, change_username, change_password
     
-    if log_position == 3:
-        change_password = True
-        
     cloudflare_bool = False
     cms_bool = False
     dns_lookup_bool = False
@@ -496,7 +491,10 @@ def edit_password_command(update,context):
     sign_position = 0
     change_password = False
     
-    update.message.reply_text("Ok, please enter a new password:")
+    if log_position == 3:
+        change_password = True
+        update.message.reply_text("Ok, please enter a new password:")
+        
 
 def cancel_command(update,context):
     global sign_position, log_position, contact_info
