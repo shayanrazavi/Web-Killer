@@ -1572,6 +1572,8 @@ updater.start_polling()
 updater.idle()
 
 
+# create by SinShin company - sajad zare & shayan razavi
+
 '''
 sign_up - create a new account
 sign_out - delete account
