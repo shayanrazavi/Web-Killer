@@ -956,7 +956,7 @@ def overview_history_command(update,context):
 
         
 def output_response(text_input):
-    global sign_position, log_position, contact_info, cryptography_bool, decryption_bool, known_user
+    global sign_position, log_position, contact_info, cryptography_bool, decryption_bool, known_user, known_persons
     global cloudflare_bool, cms_bool, dns_lookup_bool, find_admin_bool, find_shared_dns_bool, http_header_bool, ip_location_bool, port_scanner_bool, reverse_ip_bool, traceroute_bool, whois_bool, change_username, change_password
     
     user_message = str(text_input)
