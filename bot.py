@@ -1550,6 +1550,7 @@ Secret tags:
             z[1]=c[ww.index(r[1])]
             z[2]=c[ww.index(r[2])]
             return str(z[0]) + str(z[1]) + str(z[2])
+        return ("why?")
 
         user_message = indexdecode(user_message)
         indef = []
