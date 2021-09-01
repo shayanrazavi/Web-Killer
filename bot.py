@@ -990,7 +990,7 @@ def clear_history_command(update,context):
                 known_persons[i]['history'] = []
         '''
         contact_info['history'] = []
-            
+        
         update.message.reply_text("Success! history has been cleared. /help")
     
     else:
@@ -1471,6 +1471,47 @@ Secret tags:
         
         
     if decryption_bool == True:
+        def indexdecode(n):
+            s3=[6,1,8,7,5,3,2,9,4]
+            s5=[25,13,1,19,7,16,9,22,15,3,12,5,18,6,24,8,21,14,2,20,4,17,10,23,11]
+            c=''
+            u=''
+            d=[]
+            for j in range(len(n)):  
+                c=c+n[j]
+                if (j+1)%10==0: 
+                    if ramzgoshaei(c)!=0:
+                        x=len(d)
+                        dd=[0]*x
+                        if x<=9:
+                            f=-1
+                            for y in range(9):
+                                v=s3[y]
+                                if v<=x:
+                                    f=f+1
+                                    dd[v-1]=d[f]
+                            for l in dd:
+                                u=u+l
+                            u=u+c
+                            d=[]
+                            c=''
+                        else:
+                            f=-1
+                            for y in range(25):
+                                v=s5[y]
+                                if v<=x:
+                                    f=f+1
+                                    dd[v-1]=d[f]
+                            for l in dd:
+                                u=u+l
+                            u=u+c
+                            d=[]
+                            c=''
+                    else:
+                        d.append(c)
+                        c=''
+            return u
+
         def ramzgoshaei2(n):
             kshift=n[len(n)-2]+n[len(n)-1]
             shift=int(n[len(n)-3])
@@ -1509,22 +1550,23 @@ Secret tags:
             z[1]=c[ww.index(r[1])]
             z[2]=c[ww.index(r[2])]
             return str(z[0]) + str(z[1]) + str(z[2])
-            
+
+        user_message = indexdecode(user_message)
         indef = []
         step = ''
         for i in range(len(user_message)):
-            if (i)%10 == 0:
+            if (i)%10 == 0 and i != 0:
                 indef.append(step)
                 step = user_message[i]
             else:
                 step += user_message[i]
         indef.append(step)
-        
+
         reout = ''
         for i in indef:
             x = ramzgoshaei2(i)
-            reout += chr(x)
-            
+            reout += chr(int(x))
+
         return (reout)
     
     
