@@ -1467,6 +1467,8 @@ Secret tags:
         b = shift(a)
         c = index(b)
         # d = pas_kha(c)
+        
+        cryptography_bool = False
         return (c)
         
         
@@ -1550,7 +1552,6 @@ Secret tags:
             z[1]=c[ww.index(r[1])]
             z[2]=c[ww.index(r[2])]
             return str(z[0]) + str(z[1]) + str(z[2])
-        return ("why?")
 
         user_message = indexdecode(user_message)
         indef = []
@@ -1567,6 +1568,8 @@ Secret tags:
         for i in indef:
             x = ramzgoshaei2(i)
             reout += chr(int(x))
+            
+        decryption_bool = False
 
         return (reout)
     
