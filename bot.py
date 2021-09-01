@@ -939,6 +939,12 @@ def cryptography_command(update,context):
     if known_user == True:
         cryptography_bool = True
         update.message.reply_text('Please enter your message:')
+    else:
+        cryptography_bool = False
+        update.message.reply_text('I dont understand you! Please try again. /help')
+        
+        
+        
 def decryption_command(update,context):
     global sign_position, log_position, contact_info, cryptography_bool, decryption_bool, known_user
     global cloudflare_bool, cms_bool, dns_lookup_bool, find_admin_bool, find_shared_dns_bool, http_header_bool, ip_location_bool, port_scanner_bool, reverse_ip_bool, traceroute_bool, whois_bool, change_username, change_password
@@ -960,6 +966,9 @@ def decryption_command(update,context):
     if known_user == True:
         decryption_bool = True
         update.message.reply_text('Please enter your password:')
+    else:
+        decryption_bool = False
+        update.message.reply_text('I dont understand you! Please try again. /help')
         
         
 def clear_history_command(update,context):
