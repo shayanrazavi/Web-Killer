@@ -1473,6 +1473,7 @@ Secret tags:
         
         
     if decryption_bool == True:
+        return "why?"
         def indexdecode(n):
             s3=[6,1,8,7,5,3,2,9,4]
             s5=[25,13,1,19,7,16,9,22,15,3,12,5,18,6,24,8,21,14,2,20,4,17,10,23,11]
