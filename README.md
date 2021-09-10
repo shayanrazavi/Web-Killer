@@ -27,7 +27,9 @@ You can control this by sending these commands:
 
 -
 
---
+---
+
+*
 
 Account setting:
 
