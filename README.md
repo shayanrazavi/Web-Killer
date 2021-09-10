@@ -78,5 +78,6 @@ Search on history:
 
     /cancel - cancel the previous command
 
+---
 
 ****create by SinShin company - sajad zare & shayan razavi****
