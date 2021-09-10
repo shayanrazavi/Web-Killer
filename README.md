@@ -33,55 +33,55 @@ You can control this by sending these commands:
 
 Account setting:
 
-/sign_up - create a new account
+    /sign_up - create a new account
 
-/sign_out - delete account
+    /sign_out - delete account
 
-/log_in - entry in account
+    /log_in - entry in account
 
-/log_out - exit from account
+    /log_out - exit from account
 
-/edit_username - change the username
+    /edit_username - change the username
 
-/edit_password - change the password
+    /edit_password - change the password
 
 ّ
 
 Website information:
 
-/cloudflare - check cloudflare
+    /cloudflare - check cloudflare
 
-/cms - take cms
+    /cms - take cms
 
-/dns_lookup - lookup dns
+    /dns_lookup - lookup dns
 
-/find_admin - find the website admin address
+    /find_admin - find the website admin address
 
-/find_shared_dns - find the shared dns
+    /find_shared_dns - find the shared dns
 
-/http_header - take http header of websites
+    /http_header - take http header of websites
 
-/ip_location - find ip location 
+    /ip_location - find ip location 
 
-/port_scanner - sacn the ports
+    /port_scanner - sacn the ports
 
-/reverse_ip - reverse ip :))
+    /reverse_ip - reverse ip :))
 
-/traceroute - trace the route
+    /traceroute - trace the route
 
-/whois - take information of websites
+    /whois - take information of websites
 
 ّ
 
 Search on history:
 
-/clear_history - clear the URLs history
+    /clear_history - clear the URLs history
 
-/overview_history - view URLs history
+    /overview_history - view URLs history
 
 ّ
 
-/cancel - cancel the previous command
+    /cancel - cancel the previous command
 
 ّ
 
