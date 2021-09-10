@@ -45,7 +45,6 @@ Account setting:
 
     /edit_password - change the password
 
-ّ
 
 Website information:
 
@@ -71,7 +70,6 @@ Website information:
 
     /whois - take information of websites
 
-ّ
 
 Search on history:
 
@@ -79,10 +77,8 @@ Search on history:
 
     /overview_history - view URLs history
 
-ّ
 
     /cancel - cancel the previous command
 
-ّ
 
 ****create by SinShin company - sajad zare & shayan razavi****
