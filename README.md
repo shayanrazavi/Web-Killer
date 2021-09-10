@@ -17,7 +17,7 @@ But you can run this on any other telegram bot :
     
   4. Run the python file:
 
-         * python bot.py
+        *python bot.py
 
 *************************************************
 
