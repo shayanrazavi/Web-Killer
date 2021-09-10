@@ -2,14 +2,16 @@
 Web Killer Bot from SinShin Company
 ...
 
-pip install -r requirements.txt
+This code is related to the backend of a telegram bot at https://t.me/winger_encryption_bot
 
-'pip install -r requirements.txt'
+But you can run this on any other telegram bot :
 
-/pip install -r requirements.txt/
+Create a virtualenv and activate it
 
-\pip install -r requirements.txt\
+Install the required packages:
 
-"pip install -r requirements.txt"
-
-#pip install -r requirements.txt
+    pip install -r requirements.txt
+Make .env file:
+    echo "API_TOKEN=<your bot token here>" > .env
+Run the python file:
+    python bot.py
