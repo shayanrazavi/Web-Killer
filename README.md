@@ -11,7 +11,11 @@ Create a virtualenv and activate it
 Install the required packages:
 
     pip install -r requirements.txt
+    
 Make .env file:
+
     echo "API_TOKEN=<your bot token here>" > .env
+    
 Run the python file:
+
     python bot.py
