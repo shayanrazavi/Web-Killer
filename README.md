@@ -19,13 +19,9 @@ But you can run this on any other telegram bot :
 
          python bot.py
 
-ّ
-
-ّ
+--------------------------------------------------------------------------------------------------------------------------
 
 this bot can help you to get secret information about different website.
-
-ّ
 
 You can control this by sending these commands:
 
