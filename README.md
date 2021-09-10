@@ -27,6 +27,8 @@ You can control this by sending these commands:
 
 -
 
+--
+
 Account setting:
 
     /sign_up - create a new account
