@@ -10,12 +10,12 @@ But you can run this on any other telegram bot :
 
   2. Install the required packages:
 
-    pip install -r requirements.txt
+         pip install -r requirements.txt
     
   3. Make .env file:
 
-    echo "API_TOKEN=<your bot token here>" > .env
+         echo "API_TOKEN=<your bot token here>" > .env
     
   4. Run the python file:
 
-    python bot.py
+         python bot.py
