@@ -1207,9 +1207,10 @@ Secret tags:
     if cloudflare_bool == True:
         output = cloudflare(user_message)
         cloudflare_bool = False
+        '''
         for i in known_persons:
             if i == contact_info:
-                known_persons[i]['history'].append(user_message)
+                known_persons[i]['history'].append(user_message)'''
                 
         contact_info['history'].append(user_message)
         return (output)
