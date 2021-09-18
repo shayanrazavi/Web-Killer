@@ -1545,7 +1545,6 @@ Secret tags:
         
         
     if decryption_bool == True:
-        return "Under Construction..."
         def indexdecode(n):
             s3=[6,1,8,7,5,3,2,9,4]
             s5=[25,13,1,19,7,16,9,22,15,3,12,5,18,6,24,8,21,14,2,20,4,17,10,23,11]
@@ -1586,7 +1585,53 @@ Secret tags:
                         d.append(c)
                         c=''
             return u
-        
+
+        def ramzgoshaei(n):
+            kshift=n[len(n)-2]+n[len(n)-1]
+            shift=int(n[len(n)-3])
+            ot=[]
+            for i in range(len(n)-5):
+                e=int(n[i])
+                if i>=int(kshift)//10 and i<int(kshift)%10:
+                    if e-shift>=0:
+                        e=e-shift
+                    else:
+                        e=10+(e-shift)
+                    ot.append(e)
+                else:
+                    ot.append(e)
+            s1=['123rr','12r3r','12rr3','1r23r','1r2r3','1rr23','r123r','r12r3','r1r23','rr123']
+            s2=['123','132','213','231','312','321']
+            k1=int(n[len(n)-5])
+            w=s1[k1]
+            k2=int(n[len(n)-4])
+            ww=s2[k2-1]
+            c=[]
+            r=[]
+            for j in range(len(w)):
+                q=w[j]
+                if q=='1':
+                    c.append(ot[j])
+                    r.append('1')
+                elif q=='2':
+                    c.append(ot[j])
+                    r.append('2')
+                elif q=='3':
+                    c.append(ot[j])
+                    r.append('3')
+            z=[0]*3
+            z[0]=c[ww.index(r[0])]
+            z[1]=c[ww.index(r[1])]
+            z[2]=c[ww.index(r[2])]
+            al=[[0,4,6],[0,3,3],[0,6,3]]
+            space=[0,3,2]
+            if z in al:
+                return 1
+            elif z==space:
+                return 2
+            else:
+                return 0
+
         def ramzgoshaei2(n):
             kshift=n[len(n)-2]+n[len(n)-1]
             shift=int(n[len(n)-3])
@@ -1625,7 +1670,7 @@ Secret tags:
             z[1]=c[ww.index(r[1])]
             z[2]=c[ww.index(r[2])]
             return str(z[0]) + str(z[1]) + str(z[2])
-           
+
         user_message = indexdecode(user_message)
         indef = []
         step = ''
@@ -1636,14 +1681,14 @@ Secret tags:
             else:
                 step += user_message[i]
         indef.append(step)
-        
+
         reout = ''
         for i in indef:
             x = ramzgoshaei2(i)
             reout += chr(int(x))
-            
+
         decryption_bool = False
-            
+
         return (reout)
     
     
