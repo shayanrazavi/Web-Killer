@@ -38,6 +38,63 @@ reverse_ip_bool = False
 traceroute_bool = False
 whois_bool = False
 
+a='''
+Cloudflare, Inc. is an American web infrastructure and website security company that provides content delivery network and DDoS mitigation services.[2] Cloudflare's services sit between a website's visitor and the Cloudflare customer's hosting provider, acting as a reverse proxy for websites. Now, due to the widespread use of this tool, it has become an important indicator for hackers, which can be very useful to know.
+for more information :
+https://www.jigsawacademy.com/blogs/cloud-computing/what-is-cloudflare
+'''
+b='''
+The Domain Name System (DNS) is a hierarchical and decentralized naming system for computers, services, or other resources connected to the Internet or a private network. It associates various information with domain names assigned to each of the participating entities. Most prominently, it translates more readily memorized domain names to the numerical IP addresses needed for locating and identifying computer services and devices with the underlying network protocols.
+That is why it is a very important feature for us :)
+for more information :  
+https://www.fortinet.com/resources/cyberglossary/what-is-dns
+'''
+c='''
+A Content Management System, or CMS, is a piece of software designed to help users create and edit a website. It's important to note, however, CMS do much more than help manage the text and image content displayed on webpages. They have evolved to help design the look of websites, track user sessions, handle searches, collect visitor comments, host forums and much much more.
+for more information : 
+https://en.wikipedia.org/wiki/Content_management_system
+'''
+d='''
+A port scan is a method for determining which ports on a network are open. As ports on a computer are the place where information is sent and received, port scanning is analogous to knocking on doors to see if someone is home. Running a port scan on a network or server reveals which ports are open and listening (receiving information), as well as revealing the presence of security devices such as firewalls that are present between the sender and the target.
+This technique is known as fingerprinting. It is also valuable for testing network security and the strength of the system’s firewall. Due to this functionality, it is also a popular reconnaissance tool for attackers seeking a weak point of access to break into a computer. :)
+for more information : 
+https://en.wikipedia.org/wiki/Port_scanner
+'''
+e='''
+When you connect with a website, the data you get must travel across many devices along the way, particularly routers. A traceroute provides a map of how data on the internet travels from your computer to its destination. 
+A traceroute plays a different role than other diagnostic tools, such as packet capture, which analyzes data. Traceroute differs in that it examines how the data moves through the internet. Similarly, you can use Domain Name System time to live (DNS TTL) for tracerouting, but DNS TTL addresses the time needed to cache a query and does not track the flow of data between routers.
+A traceroute works by sending Internet Control Message Protocol (ICMP) packets, and every router involved in transferring the data gets these packets. The ICMP packets provide information about whether the routers used in the transmission are able to effectively transfer the data.
+for more information : 
+https://en.wikipedia.org/wiki/Traceroute
+'''
+
+def whats_couldflare(update,context):
+    global a, b, c, d, e
+    update.message.reply_text(a)
+
+def whats_dns(update,context):
+    global a, b, c, d, e
+    update.message.reply_text(b)
+
+def whats_cms(update,context):
+    global a, b, c, d, e
+    update.message.reply_text(c)
+
+def whats_port_scan(update,context):
+    global a, b, c, d, e
+    update.message.reply_text(d)
+
+def whats_traceroute(update,context):
+    global a, b, c, d, e
+    update.message.reply_text(e)
+
+def information(update,context):
+    global a, b, c, d, e
+    All = a +'\n'+'\n'+ b +'\n'+'\n'+ c +'\n'+'\n'+ d +'\n'+'\n'+ e
+    update.message.reply_text(All)
+    
+
+
 def cloudflare(url):
     '''
     subdom = ['ftp', 'cpanel', 'webmail', 'localhost', 'local', 'mysql', 'forum', 'driect-connect', 'blog', 'vb', 'forums', 'home', 'direct', 'forums', 'mail', 'access', 'admin', 'administrator', 'email', 'downloads', 'ssh', 'owa', 'bbs', 'webmin', 'paralel', 'parallels', 'www0', 'www', 'www1', 'www2', 'www3', 'www4', 'www5', 'shop', 'api', 'blogs', 'test', 'mx1', 'cdn', 'mysql', 'mail1', 'secure', 'server', 'ns1', 'ns2', 'smtp', 'vpn', 'm', 'mail2', 'postal', 'support', 'web', 'dev']
@@ -361,6 +418,14 @@ Search on history:
 /clear_history - clear the URLs history
 /overview_history - view URLs history
 
+Guide:
+/information - Gives information about functions
+/whats_couldflare - Gives information about couldflare
+/whats_dns - Gives information about dns
+/whats_cms - Gives information about cms
+/whats_port_scan - Gives information about port scan
+/whats_traceroute - Gives information about traceroute
+
 /cancel - cancel the previous command'''
     update.message.reply_text(start_message)
 
@@ -393,6 +458,14 @@ Website information:
 Search on history:
 /clear_history - clear the URLs history
 /overview_history - view URLs history
+
+Guide:
+/information - Gives information about functions
+/whats_couldflare - Gives information about couldflare
+/whats_dns - Gives information about dns
+/whats_cms - Gives information about cms
+/whats_port_scan - Gives information about port scan
+/whats_traceroute - Gives information about traceroute
 
 /cancel - cancel the previous command'''
     update.message.reply_text(help_message)
@@ -944,7 +1017,6 @@ def cryptography_command(update,context):
         update.message.reply_text('I dont understand you! Please try again. /help')
         
         
-        
 def decryption_command(update,context):
     global sign_position, log_position, contact_info, cryptography_bool, decryption_bool, known_user
     global cloudflare_bool, cms_bool, dns_lookup_bool, find_admin_bool, find_shared_dns_bool, http_header_bool, ip_location_bool, port_scanner_bool, reverse_ip_bool, traceroute_bool, whois_bool, change_username, change_password
@@ -993,13 +1065,11 @@ def clear_history_command(update,context):
     decryption_bool = False
     
     if log_position == 3:
-        '''
         for i in known_persons:
             if i['username'] == contact_info['username'] and i['password'] == contact_info['password']:
                 known_persons[i]['history'] = []
-        '''
         contact_info['history'] = []
-        
+            
         update.message.reply_text("Success! history has been cleared. /help")
     
     else:
@@ -1137,10 +1207,9 @@ Secret tags:
     if cloudflare_bool == True:
         output = cloudflare(user_message)
         cloudflare_bool = False
-        '''
         for i in known_persons:
             if i == contact_info:
-                known_persons[i]['history'].append(user_message)'''
+                known_persons[i]['history'].append(user_message)
                 
         contact_info['history'].append(user_message)
         return (output)
@@ -1148,10 +1217,9 @@ Secret tags:
     if cms_bool == True:
         output = cms(user_message)
         cms_bool = False
-        '''
         for i in known_persons:
             if i == contact_info:
-                known_persons[i]['history'].append(user_message)'''
+                known_persons[i]['history'].append(user_message)
                 
         contact_info['history'].append(user_message)
         return (output)
@@ -1159,10 +1227,9 @@ Secret tags:
     if dns_lookup_bool == True:
         output = dns_lookup(user_message)
         dns_lookup_bool = False
-        '''
         for i in known_persons:
             if i == contact_info:
-                known_persons[i]['history'].append(user_message)'''
+                known_persons[i]['history'].append(user_message)
                 
         contact_info['history'].append(user_message)
         return (output)
@@ -1170,10 +1237,9 @@ Secret tags:
     if find_admin_bool == True:
         output = find_admin(user_message)
         find_admin_bool = False
-        '''
         for i in known_persons:
             if i == contact_info:
-                known_persons[i]['history'].append(user_message)'''
+                known_persons[i]['history'].append(user_message)
                 
         contact_info['history'].append(user_message)
         return (output)
@@ -1181,10 +1247,9 @@ Secret tags:
     if find_shared_dns_bool == True:
         output = find_shared_dns(user_message)
         find_shared_dns_bool = False
-        '''
         for i in known_persons:
             if i == contact_info:
-                known_persons[i]['history'].append(user_message)'''
+                known_persons[i]['history'].append(user_message)
                 
         contact_info['history'].append(user_message)
         return (output)
@@ -1192,10 +1257,9 @@ Secret tags:
     if http_header_bool == True:
         output = http_header(user_message)
         http_header_bool = False
-        '''
         for i in known_persons:
             if i == contact_info:
-                known_persons[i]['history'].append(user_message)'''
+                known_persons[i]['history'].append(user_message)
                 
         contact_info['history'].append(user_message)
         return (output)
@@ -1203,10 +1267,9 @@ Secret tags:
     if ip_location_bool == True:
         output = ip_location(user_message)
         ip_location_bool = False
-        '''
         for i in known_persons:
             if i == contact_info:
-                known_persons[i]['history'].append(user_message)'''
+                known_persons[i]['history'].append(user_message)
                 
         contact_info['history'].append(user_message)
         return (output)
@@ -1214,10 +1277,9 @@ Secret tags:
     if port_scanner_bool == True:
         output = port_scanner(user_message)
         port_scanner_bool = False
-        '''
         for i in known_persons:
             if i == contact_info:
-                known_persons[i]['history'].append(user_message)'''
+                known_persons[i]['history'].append(user_message)
                 
         contact_info['history'].append(user_message)
         return (output)
@@ -1225,9 +1287,9 @@ Secret tags:
     if reverse_ip_bool == True:
         output = reverse_ip(user_message)
         reverse_ip_bool = False
-        '''for i in known_persons:
+        for i in known_persons:
             if i == contact_info:
-                known_persons[i]['history'].append(user_message)'''
+                known_persons[i]['history'].append(user_message)
                 
         contact_info['history'].append(user_message)
         return (output)
@@ -1235,10 +1297,9 @@ Secret tags:
     if traceroute_bool == True:
         output = traceroute(user_message)
         traceroute_bool = False
-        '''
         for i in known_persons:
             if i == contact_info:
-                known_persons[i]['history'].append(user_message)'''
+                known_persons[i]['history'].append(user_message)
                 
         contact_info['history'].append(user_message)
         return (output)
@@ -1246,15 +1307,16 @@ Secret tags:
     if whois_bool == True:
         output = whois(user_message)
         whois_bool = False
-        '''
         for i in known_persons:
             if i == contact_info:
-                known_persons[i]['history'].append(user_message)'''
+                known_persons[i]['history'].append(user_message)
                 
         contact_info['history'].append(user_message)
         return (output)
         
     if cryptography_bool == True:
+        if user_message[-1] != '!' and user_message[-1] != '.' and user_message[-1] != '?':
+            user_message += '.'
         def asembly(str_input):
             lst_output = []
             for i in str_input:
@@ -1478,6 +1540,7 @@ Secret tags:
         # d = pas_kha(c)
         
         cryptography_bool = False
+        
         return (c)
         
         
@@ -1488,7 +1551,7 @@ Secret tags:
             c=''
             u=''
             d=[]
-            for j in range(len(n)):
+            for j in range(len(n)):  
                 c=c+n[j]
                 if (j+1)%10==0: 
                     if ramzgoshaei(c)!=0:
@@ -1522,7 +1585,7 @@ Secret tags:
                         d.append(c)
                         c=''
             return u
-
+        
         def ramzgoshaei2(n):
             kshift=n[len(n)-2]+n[len(n)-1]
             shift=int(n[len(n)-3])
@@ -1561,7 +1624,7 @@ Secret tags:
             z[1]=c[ww.index(r[1])]
             z[2]=c[ww.index(r[2])]
             return str(z[0]) + str(z[1]) + str(z[2])
-
+           
         user_message = indexdecode(user_message)
         indef = []
         step = ''
@@ -1572,15 +1635,15 @@ Secret tags:
             else:
                 step += user_message[i]
         indef.append(step)
-
+        
         reout = ''
         for i in indef:
             x = ramzgoshaei2(i)
             reout += chr(int(x))
             
         decryption_bool = False
-
-        return reout
+            
+        return (reout)
     
     
     
@@ -1628,6 +1691,8 @@ dp.add_handler(CommandHandler("edit_username",edit_username_command))
 dp.add_handler(CommandHandler("edit_password",edit_password_command))
 dp.add_handler(CommandHandler("cancel",cancel_command))
 
+cloudflare, cms, dns_lookup, find_admin, find_shared_dns, http_header, ip_location, traceroute, port_scanner, reverse_ip, whois
+
 dp.add_handler(CommandHandler("cloudflare",cloudflare_command))
 dp.add_handler(CommandHandler("cms",cms_command))
 dp.add_handler(CommandHandler("dns_lookup",dns_lookup_command))
@@ -1646,20 +1711,28 @@ dp.add_handler(CommandHandler("decode",decryption_command))
 dp.add_handler(CommandHandler("clear_history",clear_history_command))
 dp.add_handler(CommandHandler("overview_history",overview_history_command))
 
+dp.add_handler(CommandHandler("information",information))
+dp.add_handler(CommandHandler("whats_couldflare",whats_couldflare))
+dp.add_handler(CommandHandler("whats_dns",whats_dns))
+dp.add_handler(CommandHandler("whats_cms",whats_cms))
+dp.add_handler(CommandHandler("whats_port_scan",whats_port_scan))
+dp.add_handler(CommandHandler("whats_traceroute",whats_traceroute))
+
 dp.add_handler(MessageHandler(Filters.text,handle_message))
 
 updater.start_polling()
 updater.idle()
 
-
 # create by SinShin company - sajad zare & shayan razavi
 
 '''
+Account management:
 sign_up - create a new account
 sign_out - delete account
 log_in - entry in account
 log_out - exit from account
 
+Web Killer functions:
 cloudflare - check cloudflare
 cms - take cms
 dns_lookup - lookup dns
@@ -1686,6 +1759,15 @@ help - none
 secret tags:
 encode - encrypt a text
 decode - break a password
+
+
+Guide:
+information - Gives information about functions
+whats_couldflare - Gives information about couldflare
+whats_dns - Gives information about dns
+whats_cms - Gives information about cms
+whats_port_scan - Gives information about port scan
+whats_traceroute - Gives information about traceroute
 '''
 
 
